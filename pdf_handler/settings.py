@@ -25,7 +25,7 @@ SECRET_KEY = 'i-u*_+mc09sk5$v_ebu^mb(49elcwb&t%_3anwl31cr!u8f1x&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://smartpdf.herokuapp.com','localhost']
 
 
 # Application definition
@@ -120,3 +120,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/images/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+import django_heroku
+django_heroku.settings(locals())
