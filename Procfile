@@ -1,1 +1,1 @@
-web: gunicorn pdf_handler.wsgiN
+web: gunicorn pdf_handler.wsgi
