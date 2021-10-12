@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'i-u*_+mc09sk5$v_ebu^mb(49elcwb&t%_3anwl31cr!u8f1x&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['https://smartpdf.herokuapp.com','localhost']
 
