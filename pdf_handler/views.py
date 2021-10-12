@@ -17,7 +17,9 @@ class ImgToPdf(APIView):
             home_img = img_list[0]
             print(home_img)
             home_img.save('xyz.pdf', "PDF" ,resolution=100.0, save_all=True, append_images=img_list[1:])
-            filename = settings.BASE_DIR+'xyz.pdf'
+            BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            print(BASE_DIR)
+            filename = BASE_DIR+'/xyz.pdf'
             print(os.path.getsize(filename))
             print('hi')
             content = FileWrapper(filename)
