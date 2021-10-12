@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from rest_framework.views import APIView
-from django.http import HttpResponse,JsonResponse
+from django.http import HttpResponse,JsonResponse, FileResponse, response
 from django.shortcuts import render
 from PIL import Image
 from wsgiref.util import FileWrapper
@@ -22,9 +22,11 @@ class ImgToPdf(APIView):
             filename = BASE_DIR+'/xyz.pdf'
             print(os.path.getsize(filename))
             print('hi')
-            content = FileWrapper(filename)
-            response = HttpResponse(content, content_type='application/pdf')
-            response['Content-Length'] = os.path.getsize(filename)
-            response['Content-Disposition'] = 'attachment; filename=%s' % 'converted.pdf'
+            # content = FileWrapper(filename)
+            # response = HttpResponse(content, content_type='application/pdf')
+            # response['Content-Length'] = os.path.getsize(filename)
+            # response['Content-Disposition'] = 'attachment; filename=%s' % 'converted.pdf'
+            # return response
+            response = FileResponse(open('xyz.pdf','rb'),as_attachment=True)
             return response
     
