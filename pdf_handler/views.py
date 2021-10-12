@@ -5,6 +5,7 @@ from django.shortcuts import render
 from PIL import Image
 from wsgiref.util import FileWrapper
 import os
+from pdf_handler import settings
 # Create your views here.
 class ImgToPdf(APIView):
       def get(self, request):
@@ -16,7 +17,9 @@ class ImgToPdf(APIView):
             home_img = img_list[0]
             print(home_img)
             home_img.save('xyz.pdf', "PDF" ,resolution=100.0, save_all=True, append_images=img_list[1:])
-            filename = 'xyz.pdf'
+            filename = settings.BASE_DIR+'xyz.pdf'
+            print(os.path.getsize(filename))
+            print('hi')
             content = FileWrapper(filename)
             response = HttpResponse(content, content_type='application/pdf')
             response['Content-Length'] = os.path.getsize(filename)
