@@ -17,16 +17,6 @@ class ImgToPdf(APIView):
             home_img = img_list[0]
             print(home_img)
             home_img.save('xyz.pdf', "PDF" ,resolution=100.0, save_all=True, append_images=img_list[1:])
-            BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-            print(BASE_DIR)
-            filename = BASE_DIR+'/xyz.pdf'
-            print(os.path.getsize(filename))
-            print('hi')
-            # content = FileWrapper(filename)
-            # response = HttpResponse(content, content_type='application/pdf')
-            # response['Content-Length'] = os.path.getsize(filename)
-            # response['Content-Disposition'] = 'attachment; filename=%s' % 'converted.pdf'
-            # return response
-            response = FileResponse(open('xyz.pdf','rb'),as_attachment=True)
+            response = FileResponse(open('xyz.pdf','rb'),as_attachment=True,filename='converted.pdf')
             return response
     
